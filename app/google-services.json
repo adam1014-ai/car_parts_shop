@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1073356001151",
+    "firebase_url": "https://car-parts-shop-60c86-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "car-parts-shop-60c86",
+    "storage_bucket": "car-parts-shop-60c86.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073356001151:android:214bdd35f9a9f8e4b9144a",
+        "android_client_info": {
+          "package_name": "com.example.carpartsshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNYyZ4G5vz0Sxs2SiHh14VF8RvKcvfDdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
