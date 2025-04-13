@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-                    // Irány a profil oldal
                     startActivity(new Intent(this, ProfileActivity.class));
                     finish();
                 } else {

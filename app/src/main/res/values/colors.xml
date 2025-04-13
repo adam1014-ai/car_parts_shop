@@ -4,17 +4,16 @@
     <color name="white">#FFFFFFFF</color>
     
     <!-- Instagram-like Colors -->
-    <color name="instagram_blue">#3F51B5</color>
-    <color name="instagram_pink">#C13584</color>
-    <color name="instagram_purple">#8A3AB9</color>
-    <color name="instagram_orange">#FCAF45</color>
-    <color name="instagram_yellow">#FFDC80</color>
-    <color name="instagram_red">#FD1D1D</color>
+    <color name="blue">#3F51B5</color>
+    <color name="pink">#C13584</color>
+    <color name="purple">#8A3AB9</color>
+    <color name="orange">#FCAF45</color>
+    <color name="yellow">#FFDC80</color>
+    <color name="red">#FD1D1D</color>
     
-    <!-- App Theme Colors -->
-    <color name="colorPrimary">@color/instagram_blue</color>
+    <color name="colorPrimary">@color/blue</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">@color/instagram_purple</color>
+    <color name="colorAccent">@color/purple</color>
     <color name="background">@color/white</color>
-    <color name="buttonColor">@color/instagram_blue</color>
+    <color name="buttonColor">@color/blue</color>
 </resources>

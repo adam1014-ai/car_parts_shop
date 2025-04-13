@@ -1,14 +1,12 @@
 <resources>
     <string name="app_name">CarPartsShop</string>
     
-    <!-- Login Screen -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_button">Log in</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="create_account">Create new account</string>
     
-    <!-- Registration Screen -->
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="address">Address</string>
@@ -17,10 +15,14 @@
     <string name="already_have_account">Already have an account? Login</string>
     <string name="create_new_account">Create New Account</string>
     
-    <!-- Profile Screen -->
     <string name="profile_title">My Profile</string>
     <string name="user_information">User Information</string>
     <string name="logout_button">Logout</string>
     <string name="profile_picture">Profile picture</string>
     <string name="app_logo">App_logo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="logout">Logout</string>
+    <string name="create">CREATE</string>
 </resources>

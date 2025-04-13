@@ -13,14 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.carpartsshop.databinding.ActivityRegisterBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
     private FirebaseAuth mAuth;
-    private DatabaseReference dbRef;
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        dbRef = FirebaseDatabase.getInstance().getReference("Users");
+        firestore = FirebaseFirestore.getInstance();
 
         binding.registerButton.setOnClickListener(v -> handleRegistration());
 
         Animation slideIn = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
         binding.formCard.startAnimation(slideIn);
-
     }
 
     private void handleRegistration() {
@@ -54,15 +55,23 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(authResult -> {
                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
-                    String userId = firebaseUser.getUid();
-                    User user = new User(firstName, lastName, address, email);
+                    if (firebaseUser != null) {
+                        String userId = firebaseUser.getUid();
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("firstName", firstName);
+                        user.put("lastName", lastName);
+                        user.put("address", address);
+                        user.put("email", email);
 
-                    dbRef.child(userId).setValue(user)
-                            .addOnSuccessListener(unused -> {
-                                showToast("Registration successful!");
-                                navigateToLogin();
-                            })
-                            .addOnFailureListener(e -> showToast("Failed to save user data"));
+                        firestore.collection("Users")
+                                .document(userId)
+                                .set(user)
+                                .addOnSuccessListener(unused -> {
+                                    showToast("Registration successful!");
+                                    navigateToLogin();
+                                })
+                                .addOnFailureListener(e -> showToast("Failed to save user data"));
+                    }
                 })
                 .addOnFailureListener(e -> showToast("Registration failed: " + e.getMessage()));
     }

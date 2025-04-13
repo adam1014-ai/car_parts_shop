@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Logo -->
         <ImageView
             android:id="@+id/ivLogo"
             android:layout_width="120dp"
@@ -27,7 +26,6 @@
             app:layout_constraintVertical_bias="0.4"
             android:layout_marginStart="32dp" />
 
-        <!-- Login card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/loginCard"
             android:layout_width="0dp"
@@ -49,7 +47,6 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- Email field -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/emailLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -65,7 +62,6 @@
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Password field -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -82,7 +78,6 @@
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Login button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonLogin"
                     android:layout_width="match_parent"
@@ -91,7 +86,6 @@
                     android:textAllCaps="false"
                     app:cornerRadius="12dp" />
 
-                <!-- Forgot password -->
                 <TextView
                     android:id="@+id/textViewForgotPassword"
                     android:layout_width="match_parent"
@@ -99,10 +93,9 @@
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="@string/forgot_password"
-                    android:textColor="@color/instagram_blue"
+                    android:textColor="@color/blue"
                     android:textSize="14sp" />
 
-                <!-- Register -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonRegister"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -115,7 +108,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Progress bar -->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"

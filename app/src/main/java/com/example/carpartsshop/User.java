@@ -7,7 +7,6 @@ public class User {
     private String email;
 
     public User() {
-        // Required for Firebase
     }
 
     public User(String firstName, String lastName, String address, String email) {

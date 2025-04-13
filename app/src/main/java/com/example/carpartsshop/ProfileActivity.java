@@ -4,19 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carpartsshop.databinding.ActivityProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
-    private DatabaseReference dbRef;
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,44 +24,41 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        dbRef = FirebaseDatabase.getInstance().getReference("Users");
+        firestore = FirebaseFirestore.getInstance();
 
-        // Set up the toolbar
         setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Profile");
         }
 
-        // Load and display user data
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String userId = currentUser.getUid();
-            dbRef.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    User user = snapshot.getValue(User.class);
-                    if (user != null) {
-                        binding.textViewFirstName.setText(user.getFirstName());
-                        binding.textViewLastName.setText(user.getLastName());
-                        binding.textViewAddress.setText(user.getAddress());
-                        binding.textViewEmail.setText(user.getEmail());
-                    } else {
-                        Toast.makeText(ProfileActivity.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
-                    }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ProfileActivity.this, "Database error: " + error.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
+            firestore.collection("Users").document(userId).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            User user = documentSnapshot.toObject(User.class);
+                            if (user != null) {
+                                binding.textViewFirstName.setText(user.getFirstName());
+                                binding.textViewLastName.setText(user.getLastName());
+                                binding.textViewAddress.setText(user.getAddress());
+                                binding.textViewEmail.setText(user.getEmail());
+                            }
+                        } else {
+                            Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e ->
+                            Toast.makeText(this, "Error loading data: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                    );
+
         } else {
             Toast.makeText(this, "No user is signed in", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
 
-        // Logout button
         binding.buttonLogout.setOnClickListener(v -> {
             mAuth.signOut();
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
