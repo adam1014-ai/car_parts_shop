@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
 
     <application
         android:allowBackup="true"
@@ -15,7 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarPartsShop"
         tools:targetApi="31">
-        
+
+        <receiver
+            android:name=".ui.parts.ReminderReceiver"
+            android:exported="false" >
+        </receiver>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -24,14 +34,47 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-            
+
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+
+        <!-- ide jön a Termékkatalógus-Activity -->
+        <activity
+            android:name=".ui.parts.ProductListActivity"
+            android:label="Alkatrész lista"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.parts.ProductDetailActivity"
+            android:label="Termék részletek"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.parts.CartActivity"
+            android:label="Kosár"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.parts.BillingActivity"
+            android:label="Számlázási adatok"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.parts.OrderSuccessActivity"
+            android:label="Rendelés sikeres"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.parts.FilterActivity"
+            android:label="Szűrő"
+            android:exported="false"/>
+
+
     </application>
 
 </manifest>

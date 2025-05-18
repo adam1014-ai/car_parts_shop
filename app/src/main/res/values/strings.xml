@@ -1,28 +1,46 @@
 <resources>
     <string name="app_name">CarPartsShop</string>
-    
+
     <string name="email_hint">Email</string>
-    <string name="password_hint">Password</string>
-    <string name="login_button">Log in</string>
-    <string name="forgot_password">Forgot password?</string>
-    <string name="create_account">Create new account</string>
-    
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="address">Address</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="register_button">Register</string>
-    <string name="already_have_account">Already have an account? Login</string>
-    <string name="create_new_account">Create New Account</string>
-    
-    <string name="profile_title">My Profile</string>
-    <string name="user_information">User Information</string>
-    <string name="logout_button">Logout</string>
-    <string name="profile_picture">Profile picture</string>
-    <string name="app_logo">App_logo</string>
+    <string name="password_hint">Jelszó</string>
+    <string name="login_button">Bejelentkezés</string>
+    <string name="forgot_password">Elfelejtetted a jelszavad?</string>
+    <string name="create_account">Új fiók létrehozása</string>
+
+    <string name="first_name">Keresztnév</string>
+    <string name="last_name">Vezetéknév</string>
+    <string name="address">Cím</string>
+    <string name="confirm_password">Jelszó megerősítése</string>
+    <string name="register_button">Regisztráció</string>
+    <string name="already_have_account">Már van fiókod? Jelentkezz be</string>
+    <string name="create_new_account">Új fiók létrehozása</string>
+
+    <string name="profile_title">Profilom</string>
+    <string name="user_information">Felhasználói adatok</string>
+    <string name="logout_button">Kijelentkezés</string>
+    <string name="profile_picture">Profilkép</string>
+    <string name="app_logo">App logó</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="log_in">Log in</string>
-    <string name="logout">Logout</string>
-    <string name="create">CREATE</string>
+    <string name="password">Jelszó</string>
+    <string name="log_in">Bejelentkezés</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="create">LÉTREHOZÁS</string>
+    <string name="profile">Profil</string>
+    <string name="user_data_not_found">Felhasználói adatok nem találhatók</string>
+    <string name="error_loading_data">Hiba az adatok betöltésekor</string>
+    <string name="no_user_signed_in">Nincs bejelentkezett felhasználó</string>
+    <string name="logged_out_successfully">Sikeres kijelentkezés</string>
+
+    <string name="kosar">Kosár</string>
+    <string name="choose_brand">Válassz márkát</string>
+    <string name="choose_year">Válassz évjáratot</string>
+    <string name="choose_model">Válassz típust</string>
+    <string name="show_parts">Mutasd az alkatrészeket</string>
+    <string name="filter">Szűrő</string>
+    <string name="Szűrés">Szűrés</string>
+    <string name="Válassz_tipust">Válassz típust</string>
+    <string name="Válassz_évjáratot">Válassz évjáratot</string>
+    <string name="Válassz_márkát">Válassz márkát</string>
+    <string name="Szűrők_törlése">Szűrők törlése</string>
+    <string name="billing">Számlázási adatok</string>
 </resources>

@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carpartsshop.databinding.ActivityLoginBinding;
+import com.example.carpartsshop.ui.parts.ProductListActivity;  // importáld be
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,23 +22,28 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, ProductListActivity.class));
+            finish();
+            return;
+        }
+
         binding.buttonLogin.setOnClickListener(v -> {
             String email = binding.editTextEmail.getText().toString().trim();
             String password = binding.editTextPassword.getText().toString().trim();
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Kérlek töltsd ki az össszes mezőt", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-
-                    startActivity(new Intent(this, ProfileActivity.class));
+                    Toast.makeText(this, "Sikeres bejelentkezés!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, ProductListActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(this, "Login failed: Incorrect password or email", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Sikertelen bejelentkezés: hibás jelszó vagy email!", Toast.LENGTH_LONG).show();
                 }
             });
         });

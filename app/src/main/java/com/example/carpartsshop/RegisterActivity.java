@@ -67,25 +67,25 @@ public class RegisterActivity extends AppCompatActivity {
                                 .document(userId)
                                 .set(user)
                                 .addOnSuccessListener(unused -> {
-                                    showToast("Registration successful!");
+                                    showToast("Sikeres regisztráció!");
                                     navigateToLogin();
                                 })
-                                .addOnFailureListener(e -> showToast("Failed to save user data"));
+                                .addOnFailureListener(e -> showToast("Nem sikerült elmenteni a felhasználót: " + e.getMessage()));
                     }
                 })
-                .addOnFailureListener(e -> showToast("Registration failed: " + e.getMessage()));
+                .addOnFailureListener(e -> showToast("Sikertelen regisztráció" + e.getMessage()));
     }
 
     private boolean validateInputs(String email, String password, String confirmPassword,
                                    String firstName, String lastName, String address) {
         if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()
                 || firstName.isEmpty() || lastName.isEmpty() || address.isEmpty()) {
-            showToast("Please fill in all fields");
+            showToast("Kérlek töltsd ki az összes mezőt");
             return false;
         }
 
         if (!password.equals(confirmPassword)) {
-            showToast("Passwords do not match");
+            showToast("Nem egyezik a jelszó");
             return false;
         }
 
